@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Information about PostgreSQL Backups, a personal encrypted backup application for Google Drive.">
+  <title>PostgreSQL Backups</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <a class="brand" href="./">PostgreSQL Backups</a>
+    <p class="eyebrow">Personal backup application</p>
+    <h1>A private copy.<br>A safer recovery.</h1>
+    <p class="lead">PostgreSQL Backups stores encrypted database backups in the owner's Google Drive, with a second encrypted copy on the owner's device.</p>
+    <section class="card" aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How it works</h2>
+      <p>A scheduled job on the owner's Raspberry Pi exports PostgreSQL databases, encrypts the backups with restic, and uploads them using rclone. Backup checks and isolated restore tests help confirm that the saved data can be recovered.</p>
+      <p>The backup policy keeps snapshots from the latest 72 hours and at least the last successful snapshot. Retention cleanup follows successful backup verification.</p>
+    </section>
+    <section class="card" aria-labelledby="drive-access">
+      <h2 id="drive-access">Limited Google Drive access</h2>
+      <p>The app requests the <code>drive.file</code> permission. It accesses backup files and folders it creates; it does not request access to the owner's other existing Drive files.</p>
+      <p>This is a personal utility operated by its owner. There is no public database viewer or account registration on this website.</p>
+    </section>
+    <footer>
+      <nav aria-label="Information"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></nav>
+      <p>No analytics, advertising, or tracking scripts.</p>
+    </footer>
+  </main>
+</body>
+</html>
