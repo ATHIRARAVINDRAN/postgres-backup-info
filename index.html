@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Information about PostgreSQL Backups, a personal encrypted backup application for Google Drive.">
+  <meta name="description" content="Information about PostgreSQL Backups, a personal SQL backup application for Google Drive.">
   <title>PostgreSQL Backups</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,12 +12,12 @@
     <a class="brand" href="./">PostgreSQL Backups</a>
     <p class="eyebrow">Personal backup application</p>
     <h1>A private copy.<br>A safer recovery.</h1>
-    <p class="lead">PostgreSQL Backups stores the owner's retained encrypted database backups in Google Drive.</p>
+    <p class="lead">PostgreSQL Backups stores the owner's readable SQL database backups privately in Google Drive.</p>
     <section class="card" aria-labelledby="how-it-works">
       <h2 id="how-it-works">How it works</h2>
-      <p>Every six hours, a scheduled job on the owner's Raspberry Pi exports PostgreSQL databases, encrypts the backups with restic, and uploads them using rclone. Backup checks and isolated restore tests help confirm that the saved data can be recovered.</p>
-      <p>The Pi's SSD is used for temporary export and restore work and a restic metadata cache. Temporary database files are cleaned after each run; no backup repository is retained on the Pi.</p>
-      <p>The backup policy keeps snapshots from the latest 72 hours and at least the last successful snapshot. Retention cleanup follows successful backup verification.</p>
+      <p>Once daily at 22:35 UTC (04:05 India time), a native cron job on the owner's database server exports PostgreSQL databases and roles as plain SQL files and uploads them using rclone. Backup checks and isolated restore tests help confirm that the saved data can be recovered.</p>
+      <p>The SQL files are not encrypted by the app. The backup folder is private in the owner's Google Drive. Temporary exports and restore work stay on the server and are cleaned after each run; retained backups are stored only in Google Drive.</p>
+      <p>The backup policy keeps three days of backups and always at least the latest successful backup. Retention cleanup follows successful backup verification.</p>
     </section>
     <section class="card" aria-labelledby="drive-access">
       <h2 id="drive-access">Limited Google Drive access</h2>
