@@ -12,10 +12,11 @@
     <a class="brand" href="./">PostgreSQL Backups</a>
     <p class="eyebrow">Personal backup application</p>
     <h1>A private copy.<br>A safer recovery.</h1>
-    <p class="lead">PostgreSQL Backups stores encrypted database backups in the owner's Google Drive, with a second encrypted copy on the owner's device.</p>
+    <p class="lead">PostgreSQL Backups stores the owner's retained encrypted database backups in Google Drive.</p>
     <section class="card" aria-labelledby="how-it-works">
       <h2 id="how-it-works">How it works</h2>
-      <p>A scheduled job on the owner's Raspberry Pi exports PostgreSQL databases, encrypts the backups with restic, and uploads them using rclone. Backup checks and isolated restore tests help confirm that the saved data can be recovered.</p>
+      <p>Every six hours, a scheduled job on the owner's Raspberry Pi exports PostgreSQL databases, encrypts the backups with restic, and uploads them using rclone. Backup checks and isolated restore tests help confirm that the saved data can be recovered.</p>
+      <p>The Pi's SSD is used for temporary export and restore work and a restic metadata cache. Temporary database files are cleaned after each run; no backup repository is retained on the Pi.</p>
       <p>The backup policy keeps snapshots from the latest 72 hours and at least the last successful snapshot. Retention cleanup follows successful backup verification.</p>
     </section>
     <section class="card" aria-labelledby="drive-access">
